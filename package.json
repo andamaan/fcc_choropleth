@@ -1,0 +1,17 @@
+{
+  "name": "choroplethmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "rm -rf docs && parcel build index.html -d docs --public-url ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^5.12.0",
+    "parcel-bundler": "^1.12.4",
+    "topojson": "^3.0.2"
+  }
+}
