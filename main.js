@@ -10,11 +10,11 @@ const div = d3.select('div')
 
 
 const g = svg.append('g')
-    //.attr('transform', 'translate(50,0)')
+    .attr('transform', 'translate(50,0)')
 
-g.call(d3.zoom().on('zoom', () => {
-    g.attr('transform', d3.event.transform)
-}))
+    g.call(d3.zoom().on('zoom', () => {
+        g.attr('transform', d3.event.transform)
+    }))
 
 const legend = svg.append('g')
     .attr('id', 'legend')
@@ -32,7 +32,7 @@ Promise
         d3.json('https://raw.githubusercontent.com/no-stack-dub-sack/testable-projects-fcc/master/src/data/choropleth_map/counties.json')
     ])
     .then(([eduData, topoJSONdata]) => { 
-console.log(eduData)
+
         const  rowById = eduData.reduce((accumulator, d)=> {
         accumulator[d.fips] = d
         return accumulator
@@ -75,18 +75,6 @@ console.log(eduData)
 
 //Legend
 
-const backgroundRect = legend.selectAll('rect')
-.data([null])
-backgroundRect.enter().append('rect')
-  .attr('id', 'legendBox')
-  .attr('x', -25)
-  .attr('y', -25)
-  .attr('width', 200)
-  .attr('height', 260)
-  .attr('rx', 7)
-  .attr('fill', 'white')
-
-
 const legendLabelArr = function() {
     let arr = []
     for (let i = 0; i < 5 ; i ++ ) {
@@ -106,7 +94,7 @@ const yScale = d3.scaleBand()
 
 const legendA = legendColor()
 .shapeWidth( 50 ) 
-.shapeHeight( 35 )
+.shapeHeight( yScale.bandwidth() / 3 )
 .shapePadding( 0 )
 .cells( 6 ) 
 .orient("vertical") 
