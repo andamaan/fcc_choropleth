@@ -62,7 +62,7 @@ Promise
             .on("mouseover", function(d) {
                     div.attr('data-name', rowById[d.id].area_name)
                     div.attr('data-education', rowById[d.id].bachelorsOrHigher)
-                    .html(rowById[d.id].area_name + ': ' + rowById[d.id].bachelorsOrHigher)
+                    .html(rowById[d.id].area_name + ': ' + rowById[d.id].bachelorsOrHigher + '%')
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px")
                         .style("opacity", 1)
